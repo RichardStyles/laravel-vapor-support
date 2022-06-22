@@ -19,7 +19,7 @@
     verbose="true"
 >
     <testsuites>
-        <testsuite name="VendorName Test Suite">
+        <testsuite name="RichardStyles Test Suite">
             <directory>tests</directory>
         </testsuite>
     </testsuites>
@@ -36,4 +36,8 @@
     <logging>
         <junit outputFile="build/report.junit.xml"/>
     </logging>
+    <php>
+        <env name="VAPOR_SUPPORT_RESPONSE_WARNING_SIZE" value="500"/>
+        <env name="VAPOR_SUPPORT_RESPONSE_LIMIT_SIZE" value="1000"/>
+    </php>
 </phpunit>
