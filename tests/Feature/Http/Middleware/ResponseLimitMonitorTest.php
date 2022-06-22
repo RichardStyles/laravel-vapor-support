@@ -1,9 +1,9 @@
 <?php
 
-use function Pest\Laravel\get;
 use Illuminate\Support\Facades\Log;
-use Symfony\Component\HttpFoundation\StreamedResponse;
+use function Pest\Laravel\get;
 use RichardStyles\LaravelVaporSupport\Http\Middleware\ResponseLimitMonitor;
+use Symfony\Component\HttpFoundation\StreamedResponse;
 
 test('the middleware in isolation warning for regular response', function () {
     Log::shouldReceive('warning')
