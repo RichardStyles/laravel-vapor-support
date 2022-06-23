@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-vapor-support` will be documented in this file.
 
+## Readme update - 2022-06-23
+
+Updated the readme to reflect how this package should be used.
+
 ## Enable for Laravel 7, 8 and 9 - 2022-06-23
 
 Enable previous versions of Laravel to make use of this package
