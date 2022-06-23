@@ -17,7 +17,12 @@ This package provides a middleware to monitor the main response:
 
 There is also support for: 
 * Symfony\Component\HttpFoundation\StreamedResponse
-However because a streamed response length is generally unknown, by default a 'info' level log is recorded to aid debugging. 
+
+However, because a streamed response length is generally unknown, by default a 'info' level log is recorded to aid debugging. 
+
+This package provides a middleware which can be used to monitor the length of the response body. 
+This allows you to be notified if a page is starting to exceed the Vapor/AWS limits. 
+The default logs included allow for route name (if set), url and size to be logged to help you pinpoint any pages of concern.
 
 ## Installation
 
@@ -70,22 +75,27 @@ protected $routeMiddleware = [
     ];
 ```
 
-For monitoring response sizes, these can be set in your .ENV, or by modifying the config.
+For monitoring response sizes (in __bytes__), these can be set in your .ENV, or by modifying the config.
 
 *Examples set very low*
 ```env
 VAPOR_SUPPORT_RESPONSE_WARNING_SIZE=1000
 VAPOR_SUPPORT_RESPONSE_LIMIT_SIZE=5000
 ```
-Example above, warning class run when response body exceeds "1000" bytes. Limit class runs when response body exceeds "5000" bytes.
+Using the example above would cause;
+- The Warning class run when response body exceeds "1000" bytes. 
+- The Limit class runs when response body exceeds "5000" bytes.
 
 The config also allows the base classes to be overridden. The Limit and Warning classes must implement `RichardStyles\LaravelVaporSupport\Contracts\HandlesResponsesLimit`
 The stream response should implement `RichardStyles\LaravelVaporSupport\Contracts\HandlesStreamResponse` as with streamed responses you cannot easily know it's length.
 
 The default actions taken by this package is to Log either:
 - Log info on streamed response
-- Log warning when request length exceeds ``warning_size`
+- Log warning when request length exceeds `warning_size`
 - Log critical when request length exceeds `limit_size`
+
+By implementing your own classes and setting these within the config `vapor-support` you can notify/alert 
+however your application requires, such as to Bugsnag or other third party services.
 
 ## Testing
 
