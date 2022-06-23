@@ -11,7 +11,6 @@ use Symfony\Component\HttpFoundation\StreamedResponse;
 
 class HandleResponseLimit
 {
-
     public LaravelSupportConfig $config;
 
     public function __construct(LaravelSupportConfig $config)

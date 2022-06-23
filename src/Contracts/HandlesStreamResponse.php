@@ -8,4 +8,3 @@ interface HandlesStreamResponse
 {
     public function handle(Request $request);
 }
-

@@ -1,9 +1,6 @@
 <?php
 
-use function Pest\Laravel\get;
 use RichardStyles\LaravelVaporSupport\Exceptions\InvalidConfig;
-use RichardStyles\LaravelVaporSupport\Contracts\HandlesResponsesLimit;
-use RichardStyles\LaravelVaporSupport\Contracts\HandlesStreamResponse;
 
 test('it can handle a valid config', function () {
     $configArray = getValidConfig();
@@ -17,29 +14,24 @@ test('it can handle a valid config', function () {
     $this->assertEquals($configArray['stream_action'], $vaporSupportConfig->streamClass::class);
 });
 
-test('no config throws exception', function(){
-
+test('no config throws exception', function () {
     $vaporSupportConfig = new \RichardStyles\LaravelVaporSupport\LaravelSupportConfig([]);
-
 })->throws(InvalidConfig::class);
 
 test('it handles invalid limit class', function () {
     $configArray = getValidConfig();
     $configArray['limit_action'] = 'invalid-class';
     $vaporSupportConfig = new \RichardStyles\LaravelVaporSupport\LaravelSupportConfig($configArray);
-
 })->throws(InvalidConfig::class);
 
 test('it handles invalid warning class', function () {
     $configArray = getValidConfig();
     $configArray['warning_action'] = 'invalid-class';
     $vaporSupportConfig = new \RichardStyles\LaravelVaporSupport\LaravelSupportConfig($configArray);
-
 })->throws(InvalidConfig::class);
 
 test('it handles invalid streaming class', function () {
     $configArray = getValidConfig();
     $configArray['stream_action'] = 'invalid-class';
     $vaporSupportConfig = new \RichardStyles\LaravelVaporSupport\LaravelSupportConfig($configArray);
-
 })->throws(InvalidConfig::class);

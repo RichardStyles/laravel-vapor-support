@@ -18,10 +18,12 @@ class LaravelVaporSupportServiceProvider extends PackageServiceProvider
     public function packageBooted()
     {
         Response::macro('getLength', function () {
+            /** @var Response $this */
             return strlen($this->getContent());
         });
 
         JsonResponse::macro('getLength', function () {
+            /** @var JsonResponse $this */
             return strlen($this->getContent());
         });
 
