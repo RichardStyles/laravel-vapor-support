@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-vapor-support` will be documented in this file.
 
+## Enable for Laravel 7, 8 and 9 - 2022-06-23
+
+Enable previous versions of Laravel to make use of this package
+
 ## Initial release - 2022-06-22
 
 Initial release of this Laravel vapor support package.
