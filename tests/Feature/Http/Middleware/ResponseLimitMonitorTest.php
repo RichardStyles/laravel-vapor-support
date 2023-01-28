@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Log;
+
 use function Pest\Laravel\get;
+
 use RichardStyles\LaravelVaporSupport\Http\Middleware\ResponseLimitMonitor;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 
